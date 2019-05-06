@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>施工队</title>
+    <meta name="renderer" content="webkit">
+    <!-- 避免IE使用兼容模式 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 -->
+    <meta name="HandheldFriendly" content="true">
+    <!-- 微软的老式浏览器 -->
+    <meta name="MobileOptimized" content="320">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <!-- UC强制全屏 -->
+    <meta name="full-screen" content="yes">
+    <!-- QQ强制全屏 -->
+    <meta name="x5-fullscreen" content="true">
+    <!-- UC应用模式 -->
+    <meta name="browsermode" content="application">
+    <!-- QQ应用模式 -->
+    <meta name="x5-page-mode" content="app">
+    <!-- windows phone 点击无高光 -->
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- WebApp全屏模式 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- 隐藏状态栏/设置状态栏颜色 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- 删除默认的苹果工具栏和菜单栏 -->
+    <meta name="apple-touch-fullscreen" content="yes">
+    <script>
+        mui.init({
+        keyEventBind: {
+        backbutton: true //关闭back按键监听
+        }
+        });
+        // //首页返回键处理
+        // //处理逻辑：1秒内，连续两次按返回键，则退出应用；
+        var first = null;
+        mui.back = function() {
+        //首次按键，提示 再按一次退出应用
+        if (!first) {
+        first = new Date().getTime();//记录第一次按下回退键的时间
+        mui.toast('再按一次退出应用');//给出提示
+        history.go(-1)//回退到上一页面
+        setTimeout(function() {//1s中后清除
+        first = null;
+        }, 1000);
+        } else {
+        if (new Date().getTime() - first < 1000) {//如果两次按下的时间小于1s，
+        plus.runtime.quit();//那么就退出app
+        } } };
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
