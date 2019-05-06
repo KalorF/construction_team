@@ -1,9 +1,7 @@
 <template>
     <div class="personal-box">
         <div class="per-nav">
-            <!-- <router-link :to="{name:'Home'}"> -->
-                <img src="@/assets/imgs/left.png" width="25" class="nav-back" @click="goback">
-            <!-- </router-link> -->
+            <img src="@/assets/imgs/left.png" width="25" class="nav-back" @click="goback">
             <div class="nav-title">
                 个人中心
             </div>
@@ -116,7 +114,6 @@ export default {
     top:18px
     left: .13rem
   .per-nav
-  //  background-color: $themeColor
    background $color
    z-index 9
    padding-top 14px
