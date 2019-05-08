@@ -35,7 +35,7 @@
             class="changebtn"
             @click="change(item.examinationOneId)"
           >更改价格</button>
-          <button class="costBtn" @click="writeCost(item.examinationOneId)">成本填写</button>
+          <button v-if="item.price !== null" class="costBtn" @click="writeCost(item.examinationOneId)">成本填写</button>
         </div>
       </div>
       <div :class="{foot:footer,foot2:!footer}">{{footertext}}</div>
@@ -157,7 +157,7 @@ export default {
       parmas.append('price', price)
       vm.$http.post('/ExaminationOneConstructionTeamController/ConstructionTeamInsertMoney', parmas)
         .then(res => {
-          Toast.success('修改成功')
+          Toast.success('提交成功')
           vm.getData()
         })
         .catch(error => {
