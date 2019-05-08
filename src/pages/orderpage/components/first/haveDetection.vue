@@ -16,6 +16,10 @@
               价格 :
               <span>{{item.price}}</span> 元
             </div>
+            <div class="area">
+              初检成本 :
+              <span>{{item.price}}</span> 元
+            </div>
             <div class="address">
               <div class="adName">地址 :</div>
               <p class="ad">{{item.addresses.details}}</p>
@@ -31,26 +35,28 @@
             class="changebtn"
             @click="change(item.examinationOneId)"
           >更改价格</button>
+          <button class="costBtn" @click="writeCost(item.examinationOneId)">成本填写</button>
         </div>
       </div>
       <div :class="{foot:footer,foot2:!footer}">{{footertext}}</div>
     </van-pull-refresh>
-    <!-- 更改价格 -->
-    <!-- <van-dialog
-            v-model="show"
-            show-cancel-button
-            :before-close="beforeClose"
-            confirm-button-text="确认修改"
-            cancel-button-text="取消修改"
-            >
-            <van-field
-                v-model="number"
-                onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')"
-                label="更改价格"
-                placeholder="请输入更改的价格"
-                maxlength="7"
-            />
-    </van-dialog>-->
+    <!-- 成本填写 -->
+    <van-dialog
+      v-model="show"
+      show-cancel-button
+      :before-close="beforeClose"
+      confirm-button-text="提交价格"
+      cancel-button-text="取消填写"
+      >
+      <van-field
+        v-model="number"
+        type="tel"
+        onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')"
+        label="成本填写"
+        placeholder="请输入初检成本价格"
+        maxlength="8"
+      />
+    </van-dialog>
   </div>
 </template>
 
@@ -136,44 +142,47 @@ export default {
     change (id) {
       const vm = this
       vm.$router.push({ path: '/resetToolPrice', query: { id: id } })
-      // vm.show = true
-      // vm.thisid = id
+    },
+    writeCost (id) {
+      const vm = this
+      vm.thisid = id
+      vm.show = true
+    },
+    sendCostPrice () {
+      const vm = this
+      const thisId = vm.thisid
+      const price = vm.number
+      const parmas = new URLSearchParams()
+      parmas.append('examinationOneId', thisId)
+      parmas.append('price', price)
+      vm.$http.post('/ExaminationOneConstructionTeamController/ConstructionTeamInsertMoney', parmas)
+        .then(res => {
+          Toast.success('修改成功')
+          vm.getData()
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    beforeClose (action, done) {
+      if (action === 'confirm') {
+        const vm = this
+        const number = vm.number
+        if (number !== '') {
+          vm.sendCostPrice()
+          setTimeout(() => {
+            vm.number = ''
+          }, 1000)
+          setTimeout(done, 1000)
+        } else {
+          Toast('填写失败,请填写价格')
+          setTimeout(done, 1000)
+        }
+      } else {
+        this.number = ''
+        done()
+      }
     }
-    // changePrice () {
-    //   const vm = this
-    //   const thisId = vm.thisid
-    //   const price = vm.number
-    //   const parmas = new URLSearchParams()
-    //   parmas.append('examinationOneId', thisId)
-    //   parmas.append('price', price)
-    //   vm.$http.post('/ExaminationOneConstructionTeamController/ConstructionTeamInsertMoney', parmas)
-    //     .then(res => {
-    //       Toast.success('修改成功')
-    //       vm.getData()
-    //     })
-    //     .catch(error => {
-    //       console.log(error)
-    //     })
-    // },
-    // beforeClose (action, done) {
-    //   if (action === 'confirm') {
-    //     const vm = this
-    //     const number = vm.number
-    //     if (number !== '') {
-    //       vm.changePrice()
-    //       setTimeout(() => {
-    //         vm.number = ''
-    //       }, 1000)
-    //       setTimeout(done, 1000)
-    //     } else {
-    //       Toast('修改失败,请填写价格')
-    //       setTimeout(done, 1000)
-    //     }
-    //   } else {
-    //     this.number = ''
-    //     done()
-    //   }
-    // }
   }
 }
 </script>
@@ -311,6 +320,18 @@ export default {
       float: right;
       color: #ffffff;
       background: linear-gradient(10deg, #28cc75, #5BE7C4);
+      border-radius: 5px;
+      height: 0.6rem;
+      line-height: 0.6rem;
+      width: 1.5rem;
+    }
+
+    .costBtn {
+      margin-top: 0.1rem;
+      margin-right: 0.2rem;
+      float: right;
+      color: #ffffff;
+      background: linear-gradient(10deg, #00c853, #b9f6ca);
       border-radius: 5px;
       height: 0.6rem;
       line-height: 0.6rem;

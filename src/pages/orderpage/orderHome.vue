@@ -8,12 +8,12 @@
         />
         </div>
         <van-tabs v-model="active" swipeable class="tabs">
-            <van-tab :title="'待初测'">
+            <van-tab :title="'待初检'">
                 <div class="content">
                 <first-detection></first-detection>
                 </div>
             </van-tab>
-            <van-tab :title="'已初测'">
+            <van-tab :title="'已初检'">
                 <div class="content">
                 <have-detection></have-detection>
                 </div>
@@ -31,12 +31,12 @@
                 <have-finish></have-finish>
                 </div>
             </van-tab>
-            <van-tab :title="'待复测'">
+            <van-tab :title="'待复检'">
                 <div class="content">
                 <wait-second></wait-second>
                 </div>
             </van-tab>
-            <van-tab :title="'已复测'">
+            <van-tab :title="'已复检'">
                 <div class="content">
                 <finish-second></finish-second>
                 </div>
