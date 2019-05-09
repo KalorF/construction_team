@@ -13,15 +13,15 @@
               <div class="text">{{item.userName}}</div>
               <span class="phone">{{item.phone}}</span>
             </div>
-            <div class="tiem">
+            <div class="time">
               预约时间 : {{item.examinationTime | formatDate }}
               <!-- 预约时间 : 2018-10-23 -->
             </div>
-            <div class="tiem">
+            <div class="time">
               施工面积 : {{item.constructionArea}} ㎡
               <!-- 施工面积 : 123 -->
             </div>
-            <div class="tiem">
+            <div class="time">
               价格 :
               <span v-if="item.price === null || item.price === 0">待填写</span>
               <span v-else>
@@ -323,7 +323,7 @@ export default {
         }
       }
 
-      .tiem {
+      .time {
         margin-top: 0.15rem;
         font-size: 12px;
         color: #515151;

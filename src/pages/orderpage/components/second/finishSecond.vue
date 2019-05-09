@@ -13,6 +13,10 @@
                     <div class="tiem">
                         完成时间 : {{item.examinationTime | formatDate}}
                     </div>
+                    <!-- <div class="area">
+                      初检成本 :
+                      <span>{{item.price}}</span> 元
+                    </div> -->
                     <div class="address">
                         <div class="adName">地址 : </div>
                         <p class="ad">{{item.addresses.details}}</p>
@@ -23,26 +27,48 @@
                 <span v-if="item.orderAttribute === 0">家装</span>
                 <span v-else-if="item.orderAttribute === 1">工装</span>
                 <button class="btn" @click="secondDetail(index)">查看详情</button>
+                <button v-if="item.orderCostDetail === null || item.orderCostDetail.status === 0" class="btn2" @click="writeCost(item.ordertables.ordersId)">成本填写</button>
             </div>
         </div>
         <div :class="{foot:footer,foot2:!footer}">
             {{footertext}}
         </div>
         </van-pull-refresh>
+        <!-- 成本填写 -->
+        <van-dialog
+          v-model="show"
+          show-cancel-button
+          :before-close="beforeClose"
+          confirm-button-text="提交价格"
+          cancel-button-text="取消填写"
+        >
+          <van-field
+            v-model="number"
+            type="tel"
+            onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')"
+            label="成本填写"
+            placeholder="请输入检测成本价格"
+            maxlength="8"
+          />
+        </van-dialog>
     </div>
 </template>
 
 <script>
 import Vue from 'vue'
-import {PullRefresh} from 'vant'
+import {PullRefresh, Toast} from 'vant'
 import {formatDate} from '@/common/date.js'
 Vue.use(PullRefresh)
+Vue.use(Toast)
 export default {
   name: 'finishSecond',
   data () {
     return {
       list: '',
-      isLoading: false
+      isLoading: false,
+      number: '',
+      show: false,
+      thisId: ''
     }
   },
   activated () {
@@ -100,6 +126,51 @@ export default {
         .catch(error => {
           console.log(error)
         })
+    },
+    writeCost (id) {
+      const vm = this
+      vm.thisid = id
+      vm.show = true
+    },
+    sendCostPrice () {
+      const vm = this
+      const thisId = vm.thisid
+      const price = vm.number
+      const parmas = new URLSearchParams()
+      parmas.append('examinationOneId', thisId)
+      parmas.append('examinationOneCost', price)
+      parmas.append('status', 1)
+      vm.$http
+        .post(
+          '/ExaminationOneConstructionTeamController/updateExaminationOneCost',
+          parmas
+        )
+        .then(res => {
+          Toast.success('提交成功')
+          vm.getData()
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    beforeClose (action, done) {
+      if (action === 'confirm') {
+        const vm = this
+        const number = vm.number
+        if (number !== '') {
+          vm.sendCostPrice()
+          setTimeout(() => {
+            vm.number = ''
+          }, 1000)
+          setTimeout(done, 1000)
+        } else {
+          Toast('填写失败,请填写价格')
+          setTimeout(done, 1000)
+        }
+      } else {
+        this.number = ''
+        done()
+      }
     }
   }
 }
@@ -164,6 +235,12 @@ export default {
                     width 93%
                     color #515151
                     font-size 13px
+            .area
+                margin-top 0.15rem
+                font-size 12px
+                color #515151
+                span
+                    color #E8222D
     .operate
         height .8rem
         background-color #fff
@@ -187,6 +264,16 @@ export default {
             border-radius 5px
             height .6rem
             line-height .6rem
+            width 1.5rem
+        .btn2
+            margin-top 0.1rem
+            margin-right 0.2rem
+            float right
+            color #ffffff
+            background linear-gradient(10deg, #00c853, #b9f6ca)
+            border-radius 5px
+            height 0.6rem
+            line-height 0.6rem
             width 1.5rem
         .btnsc
             margin-top .1rem

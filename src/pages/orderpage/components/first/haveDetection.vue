@@ -16,10 +16,10 @@
               价格 :
               <span>{{item.price}}</span> 元
             </div>
-            <div class="area">
+            <!-- <div class="area">
               初检成本 :
               <span>{{item.price}}</span> 元
-            </div>
+            </div> -->
             <div class="address">
               <div class="adName">地址 :</div>
               <p class="ad">{{item.addresses.details}}</p>
@@ -35,7 +35,11 @@
             class="changebtn"
             @click="change(item.examinationOneId)"
           >更改价格</button>
-          <button v-if="item.price !== null" class="costBtn" @click="writeCost(item.examinationOneId)">成本填写</button>
+          <button
+            v-if="item.orderCostDetail === null || item.orderCostDetail.status === -1"
+            class="costBtn"
+            @click="writeCost(item.examinationOneId)"
+          >成本填写</button>
         </div>
       </div>
       <div :class="{foot:footer,foot2:!footer}">{{footertext}}</div>
@@ -47,13 +51,13 @@
       :before-close="beforeClose"
       confirm-button-text="提交价格"
       cancel-button-text="取消填写"
-      >
+    >
       <van-field
         v-model="number"
         type="tel"
         onkeyup="value=value.replace(/[^\d{1,}\.\d{1,}|\d{1,}]/g,'')"
         label="成本填写"
-        placeholder="请输入初检成本价格"
+        placeholder="请输入检测成本价格"
         maxlength="8"
       />
     </van-dialog>
@@ -154,8 +158,13 @@ export default {
       const price = vm.number
       const parmas = new URLSearchParams()
       parmas.append('examinationOneId', thisId)
-      parmas.append('price', price)
-      vm.$http.post('/ExaminationOneConstructionTeamController/ConstructionTeamInsertMoney', parmas)
+      parmas.append('examinationOneCost', price)
+      parmas.append('status', 0)
+      vm.$http
+        .post(
+          '/ExaminationOneConstructionTeamController/updateExaminationOneCost',
+          parmas
+        )
         .then(res => {
           Toast.success('提交成功')
           vm.getData()
