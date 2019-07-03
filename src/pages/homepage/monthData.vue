@@ -3,6 +3,7 @@
         <van-nav-bar
         title="月经营数据"
         left-arrow
+        fixed
         @click-left="$router.goBack"
         />
         <div class="month-box">
@@ -69,9 +70,9 @@ export default {
 <style lang="stylus" scoped>
 .month-box
   background-color: #fff
+  margin-top 1.4rem
   padding: .18rem .3rem
   position: relative
-  z-index: 4
   bottom: .03rem
   .noData
     margin-top .5rem

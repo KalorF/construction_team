@@ -3,6 +3,7 @@
         <van-nav-bar
         title="已完成总额详情"
         left-arrow
+        fixed
         @click-left="$router.goBack"
         />
         <div class="finish-box">
@@ -59,9 +60,9 @@ export default {
 <style lang="stylus" scoped>
 .finish-box
   background-color: #fff
+  margin-top 1.4rem
   padding: .18rem .3rem
   position: relative
-  z-index: 4
   bottom: .03rem
   .money-content
     height: 1.7rem

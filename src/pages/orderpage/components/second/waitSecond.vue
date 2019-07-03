@@ -93,7 +93,7 @@ export default {
   },
   methods: {
     viewresult (index) {
-      this.$router.push({path: '/finishDetail', query: {index: index}})
+      this.$router.push({path: '/secondviewOrder', query: {index: index}})
     },
     writeResult (examinationTwoId) {
       this.$router.push({path: '/writeSecondData', query: {examinationTwoId: examinationTwoId}})

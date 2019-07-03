@@ -98,6 +98,7 @@ export default {
     },
     getData () {
       const vm = this
+      vm.list = []
       vm.$http.post('/ConstructionBuilderAppControllerLxb/showAll')
         .then(res => {
           const id = res.data.data.ConstructionBuilder.constructionBuilderId

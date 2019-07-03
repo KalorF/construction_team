@@ -11,93 +11,106 @@
         <span>{{Total}}</span> 元
       </p>
     </div>
-    <div class="area-box">
-      <img src="@/assets/imgs/area.png">
-      <div>面积</div>
-      <input v-model="area" type="number" min="0" max="10000" class="thisinput" placeholder="请填写">
-    </div>
-    <div class="level-box">
-      <div class="box-head">
-        <div class="circle"></div>
-        <span>一级</span>
-        <!-- <img src="@/assets/imgs/tj.png" @click="addOne"> -->
-      </div>
-      <div class="line"></div>
-      <!-- <div class="warn" v-if="list === 0">请添加一级数据</div> -->
-      <transition-group name="fadeIn" mode="out-in">
-        <div class="level-item" v-for="(i,index) in list" :key="index">
-          <!-- <img src="@/assets/imgs/js.png" @click="decreaseOne(index)"> -->
-          <input type="text" v-model="columnsOne[index]" :key="index" placeholder="请选择" readonly>
-          <div>
-            <van-stepper v-model="valueOne[index]" :min="0"/>
-          </div>
+    <section id="apply">
+      <div class="area-box">
+        <img src="@/assets/imgs/area.png">
+        <div class="areItem">
+          <span>面积</span>
+          <input @click="areaF" v-model="area" type="number" min="0" max="10000" class="thisinput" placeholder="请填写">
         </div>
-      </transition-group>
-      <div class="line2"></div>
-      <div class="total" v-if="list !== 0">
-        <p>
-          价格：
-          <span>{{oneTotal}}</span> 元
-        </p>
-      </div>
-    </div>
-    <div class="level-box">
-      <div class="box-head">
-        <div class="circle"></div>
-        <span>二级</span>
-        <!-- <img src="@/assets/imgs/tj.png" @click="addTwo"> -->
-      </div>
-      <div class="line"></div>
-      <!-- <div class="warn" v-if="list2 === 0">请添加二级数据</div> -->
-      <transition-group name="fadeIn" mode="out-in">
-        <div class="level-item" v-for="(i,index) in list2" :key="index">
-          <!-- <img src="@/assets/imgs/js.png" @click="decreaseTwo(index)"> -->
-          <input type="text" v-model="columnsTwo[index]" :key="index" placeholder="请选择" readonly>
-          <div>
-            <van-stepper v-model="valueTwo[index]" :min="0"/>
-          </div>
+        <div class="areItem">
+          <span>每平米价格</span>
+          <input @click="areaF" v-model="arePrice" type="number" min="0" max="1000" class="thisinput" placeholder="请填写">
         </div>
-      </transition-group>
-      <div class="line2"></div>
-      <div class="total" v-if="list2 !== 0">
-        <p>
-          价格：
-          <span>{{twoTotal}}</span> 元
-        </p>
       </div>
-    </div>
-    <div class="level-box">
-      <div class="box-head">
-        <div class="circle"></div>
-        <span>三级</span>
-        <!-- <img src="@/assets/imgs/tj.png" @click="addThree"> -->
-      </div>
-      <div class="line"></div>
-      <!-- <div class="warn" v-if="list3 === 0">请添加三级数据</div> -->
-      <transition-group name="fadeIn" mode="out-in">
-        <div class="level-item" v-for="(i,index) in list3" :key="index">
-          <!-- <img src="@/assets/imgs/js.png" @click="decreaseThree(index)"> -->
-          <input type="text" v-model="columnsThree[index]" :key="index" placeholder="请选择" readonly>
-          <div class="ThreeDiv">
-            <input
-              type="number"
-              v-model="valueThree[index]"
-              class="ThreeInput"
-              min="0"
-              placeholder="请填写"
-            >
-            <span>m²</span>
-          </div>
+      <div class="level-box">
+        <div class="box-head">
+          <div class="circle"></div>
+          <span>一级</span>
+          <!-- <img src="@/assets/imgs/tj.png" @click="addOne"> -->
         </div>
-      </transition-group>
-      <div class="line2"></div>
-      <div class="total" v-if="list3 !== 0">
-        <p>
-          价格：
-          <span>{{threeTotal}}</span> 元
-        </p>
+        <div class="line"></div>
+        <!-- <div class="warn" v-if="list === 0">请添加一级数据</div> -->
+        <transition-group name="fadeIn" mode="out-in">
+          <div class="level-item" v-for="(i,index) in list" :key="index">
+            <!-- <img src="@/assets/imgs/js.png" @click="decreaseOne(index)"> -->
+            <input type="text" v-model="columnsOne[index]" :key="index" placeholder="请选择" readonly>
+            <div>
+              <van-stepper v-model="valueOne[index]" :min="0"/>
+            </div>
+          </div>
+        </transition-group>
+        <div class="line2"></div>
+        <div class="total" v-if="list !== 0">
+          <p>
+            价格：
+            <span>{{oneTotal}}</span> 元
+          </p>
+        </div>
       </div>
-    </div>
+      <div class="level-box">
+        <div class="box-head">
+          <div class="circle"></div>
+          <span>二级</span>
+          <!-- <img src="@/assets/imgs/tj.png" @click="addTwo"> -->
+        </div>
+        <div class="line"></div>
+        <!-- <div class="warn" v-if="list2 === 0">请添加二级数据</div> -->
+        <transition-group name="fadeIn" mode="out-in">
+          <div class="level-item" v-for="(i,index) in list2" :key="index">
+            <!-- <img src="@/assets/imgs/js.png" @click="decreaseTwo(index)"> -->
+            <input type="text" v-model="columnsTwo[index]" :key="index" placeholder="请选择" readonly>
+            <div>
+              <van-stepper v-model="valueTwo[index]" :min="0"/>
+            </div>
+          </div>
+        </transition-group>
+        <div class="line2"></div>
+        <div class="total" v-if="list2 !== 0">
+          <p>
+            价格：
+            <span>{{twoTotal}}</span> 元
+          </p>
+        </div>
+      </div>
+      <div class="level-box" ref="priceThree">
+        <div class="box-head">
+          <div class="circle"></div>
+          <span>三级</span>
+          <!-- <img src="@/assets/imgs/tj.png" @click="addThree"> -->
+        </div>
+        <div class="line"></div>
+        <!-- <div class="warn" v-if="list3 === 0">请添加三级数据</div> -->
+        <transition-group name="fadeIn" mode="out-in">
+          <div class="level-item" v-for="(i,index) in list3" :key="index">
+          <!-- <div class="level-item" v-for="i in 1" :key="i"> -->
+
+            <!-- <img src="@/assets/imgs/js.png" @click="decreaseThree(index)"> -->
+            <input type="text" v-model="columnsThree[index]" :key="index" placeholder="请选择" readonly>
+            <div class="ThreeDiv">
+              <input
+                type="number"
+                id="areaInput"
+                v-model="valueThree[index]"
+                class="ThreeInput"
+                min="0"
+                @click="focus"
+                @input="inputFocus"
+                placeholder="请填写"
+              >
+              <span>m²</span>
+            </div>
+          </div>
+        </transition-group>
+        <div class="line2"></div>
+        <div class="total" v-if="list3 !== 0">
+          <p>
+            价格：
+            <span>{{threeTotal}}</span> 元
+          </p>
+        </div>
+      </div>
+    </section>
     <!-- <div class="other-box">
             <div class="circle"></div>
             <span>其它</span>
@@ -146,6 +159,7 @@
 <script>
 import Vue from 'vue'
 import { Picker, Toast, Actionsheet, Stepper, Dialog } from 'vant'
+import { setTimeout } from 'timers'
 Vue.use(Picker)
 Vue.use(Actionsheet)
 Vue.use(Toast)
@@ -183,13 +197,13 @@ export default {
       levelOnePrice: '',
       levelTwoPrice: '',
       levelThreePrice: '',
-      areaUnitPrice: ''
+      areaUnitPrice: '',
+      arePrice: ''
     }
   },
-  //   created () {
-  //     const vm = this
-  //     vm.getPrice()
-  //   },
+  created () {
+
+  },
   activated () {
     const vm = this
     vm.getPrice()
@@ -247,7 +261,7 @@ export default {
         return 0
       } else {
         return (
-          vm.oneTotal + vm.twoTotal + vm.threeTotal + vm.area * vm.areaUnitPrice
+          vm.oneTotal + vm.twoTotal + vm.threeTotal + vm.area * vm.arePrice
         )
       }
     }
@@ -338,12 +352,71 @@ export default {
     //   }
     //   vm.show3 = false
     // },
+    // 初始化resize事件，防止再次触发上一次的resize
+    areaF () {
+      window.onresize = function () {
+      }
+    },
+    focus () {
+      var viewHeight = window.innerHeight
+      window.onresize = function () {
+        var thisHeight = document.documentElement.clientHeight
+        if (viewHeight - thisHeight > 50) {
+          // 窗口发生改变(大),故此时键盘弹出
+          setTimeout(() => {
+            document.getElementById('apply').style.position = 'absolute'
+            document.getElementById('apply').style.bottom = 0
+            document.getElementById('apply').style.width = '100%'
+          }, 300)
+        } else {
+          setTimeout(() => {
+            // 窗口发生改变(小),故此时键盘收起
+            document.getElementById('apply').style.position = 'relative'
+            document.getElementById('apply').scrollTop = 0
+            document.getElementById('areaInput').blur()
+          }, 200)
+        }
+      }
+      // document.getElementById('apply').style.position = 'absolute'
+      // document.getElementById('apply').style.bottom = 0
+      // document.getElementById('apply').style.width = '100%'
+      // var clientHeight = document.documentElement.clientHeight || document.body.clientHeight
+      // window.onresize = function () {
+      //   var nowClientHeight = document.documentElement.clientHeight || document.body.clientHeight
+      //   if (clientHeight - nowClientHeight > 60) { // 因为ios有自带的底部高度
+      //     // document.getElementById('areaInput').focus()
+      //     // setTimeout(() => {
+      //     // document.getElementById('apply').classList.add()
+      //     document.getElementById('apply').style.position = 'absolute'
+      //     document.getElementById('apply').style.bottom = 0
+      //     document.getElementById('apply').style.width = '100%'
+      //     // }, 200)
+      //   // 键盘弹出的事件处理
+      //   } else {
+      //   // 键盘收起的事件处理
+      //     // setTimeout(() => {
+      //     // document.getElementById('apply').classList.remove('focusState')
+      //     document.getElementById('apply').style.position = 'relative'
+      //     document.getElementById('apply').style.top = 0
+      //     // document.getElementById('areaInput').unbind('focus')
+      //     // }, 200)
+      //   }
+      // }
+    },
+    inputFocus () {
+      const vm = this
+      if (Number(vm.valueThree[0]) > Number(vm.area)) {
+        Toast('木地板面积应小于房屋面积')
+      }
+    },
     send () {
       const vm = this
       vm.listName = [...vm.columnsOne, ...vm.columnsTwo, ...vm.columnsThree] // ES6写法 ES5: arr1.concat(arr2,arr3) 对象:Object.assign(obj1,obj2,obj3)
       vm.listNumber = [...vm.valueOne, ...vm.valueTwo, ...vm.valueThree]
       if (vm.area === '' || vm.area === null) {
         Toast('请填写施工面积')
+      } else if (vm.arePrice === '' || vm.arePrice === null) {
+        Toast('请填写每平米价格')
       } else {
         for (const i in vm.listNumber) {
           if (vm.listNumber[i] !== 0 && vm.listNumber[i] !== '') {
@@ -396,13 +469,13 @@ export default {
       const vm = this
       const customerFurnitureList = vm.customerFurnitureList
       const FurnitureList = { customerFurnitureList }
-      const basicPrice = vm.area * vm.areaUnitPrice
+      const basicPrice = vm.area * vm.arePrice
       const thisId = vm.$route.query.id
       const params = new URLSearchParams()
       params.append('customerFurnitureList', JSON.stringify(FurnitureList))
       params.append('examinationOneId', thisId)
       params.append('constructionArea', vm.area)
-      params.append('areaUnitPrice', vm.areaUnitPrice)
+      params.append('areaUnitPrice', vm.arePrice)
       params.append('basicPrice', basicPrice)
       params.append(
         'additionalPrice',
@@ -434,6 +507,7 @@ export default {
           vm.levelTwoPrice = res.data.priceSystem.levelTwoPrice
           vm.levelThreePrice = res.data.priceSystem.levelThreePrice
           vm.areaUnitPrice = res.data.priceSystem.areaUnitPrice
+          vm.arePrice = res.data.priceSystem.areaUnitPrice
           for (const i in res.data.furnitureList) {
             if (res.data.furnitureList[i].level === '1') {
               vm.columnsOne.push(res.data.furnitureList[i].furnitureName)
@@ -466,6 +540,10 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.focusState
+  position absolute
+  bottom 0
+  width 100%
 .fadeIn-enter-active, .fadeIn-leave-active {
   transition: all 0.5s ease;
 }
@@ -521,8 +599,8 @@ export default {
     margin-top: auto;
     margin-bottom: auto;
     color: #2d2d2d;
-    margin-left: -webkit-calc(100% - 5.3rem);
-
+    margin-left: auto;
+    margin-right: 10px;
     span {
       color: #E8222D;
     }
@@ -582,18 +660,22 @@ export default {
     border-bottom: 1px solid #42D66C;
   }
 }
-
+.areItem {
+  display flex
+  margin-top .25rem
+}
 .area-box {
   width: 93%;
-  height: 1rem;
+  // height: 1rem;
   margin-left: auto;
   margin-top: 2.85rem;
   margin-right: auto;
   box-shadow: rgb(240, 240, 240) 0px 0px 12px;
   border-radius: 5px;
   background-color: #ffffff;
-  display: flex;
-
+  // display: flex;
+  padding-bottom .3rem
+  padding-top .2rem
   img {
     margin-top: auto;
     margin-bottom: auto;
@@ -602,11 +684,12 @@ export default {
     height: 29px;
   }
 
-  div {
+  span {
+    display inline-block
     margin-top: auto;
     margin-bottom: auto;
-    width: 70%;
-    margin-left: 0.2rem;
+    // width: 70%;
+    margin-left: .4rem;
     font-size: 17px;
     color: #2d2d2d;
   }
@@ -615,8 +698,8 @@ export default {
     width: 1.3rem;
     margin-top: auto;
     margin-bottom: auto;
-    font-size: 16px;
-    margin-left: 0.1rem;
+    font-size: 15px;
+    margin-left: auto;
     margin-right: 0.2rem;
     text-align: center;
     color: #2d2d2d;

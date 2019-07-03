@@ -15,19 +15,19 @@
             </div>
         </div>
         <div class="data-detail">
-            <div class="detail-item">
+            <div class="detail-item" @click="toView">
                 <p class="detail-title">月收入</p>
                 <p class="detail" v-if="show1">无数据</p>
                 <p class="detail-money">{{price}}</p>
             </div>
             <div class="detail-line"></div>
-            <div class="detail-item">
+            <div class="detail-item" @click="toView">
                 <p class="detail-title">订单数</p>
                 <p class="detail" v-if="show2">无数据</p>
                 <p class="detail-money">{{orders}}</p>
             </div>
             <div class="detail-line"></div>
-            <div class="detail-item">
+            <div class="detail-item" @click="toView">
                 <p class="detail-title">平均</p>
                 <p class="detail" v-if="show3">无数据</p>
                 <p class="detail-money">{{avePrice}}</p>
@@ -72,6 +72,10 @@ export default {
     }
   },
   methods: {
+    toView () {
+      const vm = this
+      vm.$router.push({name: 'MonthData'})
+    },
     getData () {
       const vm = this
       vm.$http.post('/ConstructionBuilderAppControllerLxb/IncomeDetails')
@@ -93,7 +97,7 @@ export default {
 .data-box
   background-color #ffffff
   height: 3.2rem
-  border-bottom:2px solid #eee
+  border-bottom:2px solid #fcfcfc
   .data-title
     height: .7rem
     display: flex

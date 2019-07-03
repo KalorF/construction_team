@@ -27,7 +27,7 @@
                 <span v-if="item.orderAttribute === 0">家装</span>
                 <span v-else-if="item.orderAttribute === 1">工装</span>
                 <button class="btn" @click="secondDetail(index)">查看详情</button>
-                <button v-if="item.orderCostDetail === null || item.orderCostDetail.status === 0" class="btn2" @click="writeCost(item.ordertables.ordersId)">成本填写</button>
+                <button v-if="item.orderCostDetail === null || item.orderCostDetail.status === 0" class="btn2" @click="writeCost(item.examinationOneId)">成本填写</button>
             </div>
         </div>
         <div :class="{foot:footer,foot2:!footer}">

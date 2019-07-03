@@ -1,11 +1,11 @@
 <template>
     <div class="home">
         <home-header></home-header>
-        <home-navbar></home-navbar>
         <div class="home-line-second"></div>
         <home-data></home-data>
-        <div class="home-line"></div>
-        <home-tool></home-tool>
+        <home-navbar></home-navbar>
+        <!-- <div class="home-line"></div> -->
+        <!-- <home-tool></home-tool> -->
         <!-- <div class="foot">
           更多内容敬请期待
         </div> -->
@@ -29,7 +29,7 @@ import { Toast, Dialog } from 'vant'
 import HomeHeader from './components/header'
 import HomeNavbar from './components/navbar'
 import HomeData from './components/data'
-import HomeTool from './components/tool'
+// import HomeTool from './components/tool'
 Vue.use(Toast)
 Vue.use(Dialog)
 export default {
@@ -46,15 +46,15 @@ export default {
   components: {
     HomeHeader,
     HomeNavbar,
-    HomeData,
-    HomeTool
+    HomeData
+    // HomeTool
   },
   methods: {
     getUpdate () {
       const vm = this
       const params = new URLSearchParams()
       // const VersionNumber = 1
-      params.append('VersionNumber', 3) // 版本号
+      params.append('VersionNumber', 9) // 版本号
       vm.$http.post('/updateApp', params)
         .then(res => {
           if (res.data.code === 100) {
@@ -98,7 +98,7 @@ export default {
   color #5f5f5f
 .home
   height 100vh
-  background-color #f5f7fa
+  background-color #ffffff
 .home-line-second
   height .18rem
   background-color #ffffff

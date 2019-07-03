@@ -22,6 +22,7 @@ import viewFirst from '@/pages/orderpage/components/viewFirst'
 import viewOrder from '@/pages/orderpage/components/order/viewOrder'
 import finishDetail from '@/pages/orderpage/components/finishDetail'
 import writeSecondData from '@/pages/orderpage/components/second/writeSecondData'
+import secondviewOrder from '@/pages/orderpage/components/secondviewOrder'
 import secondDetail from '@/pages/orderpage/components/secondDetail'
 import viewSecondReport from '@/pages/orderpage/components/viewSecondReport'
 import uploadPicture from '@/pages/orderpage/components/order/uploadPicture'
@@ -54,6 +55,7 @@ const router = new Router({
     {path: '/finishDetail', name: 'finishDetail', meta: {index: 2}, component: finishDetail},
     {path: '/writeSecondData', name: 'writeSecondData', meta: {index: 2}, component: writeSecondData},
     {path: '/secondDetail', name: 'secondDetail', meta: {index: 2}, component: secondDetail},
+    {path: '/secondviewOrder', name: 'secondviewOrder', meta: {index: 2}, component: secondviewOrder},
     {path: '/viewSecondReport', name: 'viewSecondReport', meta: {index: 2}, component: viewSecondReport},
     {path: '/personal', name: 'Personal', meta: {index: 1}, component: Personal},
     {path: '/changePwd', name: 'changePwd', meta: {index: 2}, component: changePwd},
