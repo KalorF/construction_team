@@ -51,6 +51,7 @@ export default {
   .child-view::-webkit-scrollbar {
     display: none
   }
+  /* 路由切换动画 */
   .child-view {
     position: absolute;
     width:100%;

@@ -131,6 +131,7 @@ export default {
         })
       })
     },
+    // 对图片进行压缩
     compressImage (url, filename) {
       let self = this
       var name = '_doc/' + filename
@@ -147,6 +148,7 @@ export default {
         console.log(error)
       })
     },
+    // 调用手机拍照功能
     getImage () {
       let self = this
       self.show = false
@@ -162,6 +164,7 @@ export default {
       }, function (e) {
       }, { filename: '_doc/camera/', index: 1 })
     },
+    // 调用本机相册
     galleryImgs () {
       let self = this
       self.show = false
@@ -171,7 +174,7 @@ export default {
           self.compressImage(e.files[i].replace('file://', ''), name)
         }
       }, function (e) {
-      }, {filter: 'image', multiple: true})
+      }, {filter: 'image', multiple: true}) // 允许选择多张
     }
   }
 }

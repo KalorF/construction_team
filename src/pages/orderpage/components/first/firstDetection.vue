@@ -137,6 +137,7 @@ export default {
     next()
   },
   methods: {
+    // 填写价格路由跳转
     writeResult (examinationOneId, item) {
       if (item.price === null || item.price === 0) {
         Toast('请先填写价格')
@@ -223,6 +224,7 @@ export default {
     //     done()
     //   }
     // },
+    // 刷新调用
     onRefresh () {
       const vm = this
       vm.getData()
@@ -236,6 +238,7 @@ export default {
         }
       }, 500)
     },
+    // 获取信息
     getData () {
       const vm = this
       vm.$http

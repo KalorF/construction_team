@@ -132,6 +132,7 @@ export default {
         }
       }, 500)
     },
+    // 获取已初检订单数据
     getData () {
       const vm = this
       vm.$http
@@ -143,10 +144,12 @@ export default {
           console.log(error)
         })
     },
+    // 更改初检价格，针对工装
     change (id) {
       const vm = this
       vm.$router.push({ path: '/resetToolPrice', query: { id: id } })
     },
+    // 填写初检成本
     writeCost (id) {
       const vm = this
       vm.thisid = id

@@ -131,6 +131,7 @@ export default {
         console.log(error)
       })
     },
+    // 调用手机拍照功能
     getImage () {
       let self = this
       self.show = false
@@ -146,6 +147,7 @@ export default {
       }, function (e) {
       }, { filename: '_doc/camera/', index: 1 })
     },
+    // 调用本机相册
     galleryImgs () {
       let self = this
       self.show = false

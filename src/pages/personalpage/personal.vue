@@ -68,6 +68,7 @@ export default {
     next()
   },
   methods: {
+    // 获取基本的个人信息
     getData () {
       const vm = this
       vm.$http.post('/ConstructionBuilderAppControllerLxb/showAll')

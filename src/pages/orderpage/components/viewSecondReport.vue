@@ -142,6 +142,7 @@ export default {
     show (index) {
       this.$refs.previewer.show(index)
     },
+    // 修改复检报告数据
     reset (item) {
       const vm = this
       vm.showDialog = true

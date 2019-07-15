@@ -1,69 +1,69 @@
 <template>
     <div>
-        <van-nav-bar
-        title="初测结果"
-        left-arrow
-        @click-left="$router.goBack"
-        fixed
-        />
-        <div class="box">
-            <div class="data-box" v-for="(item,index) of reportList" :key="index">
-                <!-- 每个数据的展示 -->
-                <div class="data-detail">
-                    <div class="place-data">
-                        <div class="place">
-                            <div class="pl">
-                                <img src="@/assets/imgs/address.png" width="18" height="18">
-                                <div class="pl-text">
-                                    <p>检测地点</p>
-                                    <div class="line"></div>
-                                    <p class="placetext">{{item.examinationPointName}}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="place">
-                            <div class="pl">
-                                <img src="@/assets/imgs/data.png" width="16" height="16">
-                                <div class="pl-text">
-                                    <p>甲醛指数</p>
-                                    <div class="line"></div>
-                                    <p class="placetext">{{item.hchoFigure}}&nbsp;mg/m³</p>
-                                    <p>苯指数</p>
-                                    <div class="line"></div>
-                                    <p class="placetext">{{item.benzeneFigure}}&nbsp;mg/m³</p>
-                                    <p>TVOC指数</p>
-                                    <div class="line"></div>
-                                    <p class="placetext">{{item.tvocFigure}}&nbsp;mg/m³</p>
-                                    <p>氨指数</p>
-                                    <div class="line"></div>
-                                    <p class="placetext">{{item.ammoniaFigure}}&nbsp;mg/m³</p>
-                                </div>
+      <van-nav-bar
+      title="初测结果"
+      left-arrow
+      @click-left="$router.goBack"
+      fixed
+      />
+      <div class="box">
+        <div class="data-box" v-for="(item,index) of reportList" :key="index">
+            <!-- 每个数据的展示 -->
+            <div class="data-detail">
+                <div class="place-data">
+                    <div class="place">
+                        <div class="pl">
+                            <img src="@/assets/imgs/address.png" width="18" height="18">
+                            <div class="pl-text">
+                                <p>检测地点</p>
+                                <div class="line"></div>
+                                <p class="placetext">{{item.examinationPointName}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="ctrl">
-                        <div>
-                            <img :src="item.src" width="87" height="70" class="cardimg" @click="show(index)">
-                            <div class="text">
-                                {{item.zhishu}}
+                    <div class="place">
+                        <div class="pl">
+                            <img src="@/assets/imgs/data.png" width="16" height="16">
+                            <div class="pl-text">
+                                <p>甲醛指数</p>
+                                <div class="line"></div>
+                                <p class="placetext">{{item.hchoFigure}}&nbsp;mg/m³</p>
+                                <p>苯指数</p>
+                                <div class="line"></div>
+                                <p class="placetext">{{item.benzeneFigure}}&nbsp;mg/m³</p>
+                                <p>TVOC指数</p>
+                                <div class="line"></div>
+                                <p class="placetext">{{item.tvocFigure}}&nbsp;mg/m³</p>
+                                <p>氨指数</p>
+                                <div class="line"></div>
+                                <p class="placetext">{{item.ammoniaFigure}}&nbsp;mg/m³</p>
                             </div>
-                            <div class="text1">
-                                {{item.zhishu2}}
-                            </div>
-                            <div class="text1">
-                                {{item.zhishu3}}
-                            </div>
-                            <div class="text1">
-                                {{item.zhishu4}}
-                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ctrl">
+                    <div>
+                        <img :src="item.src" width="87" height="70" class="cardimg" @click="show(index)">
+                        <div class="text">
+                            {{item.zhishu}}
+                        </div>
+                        <div class="text1">
+                            {{item.zhishu2}}
+                        </div>
+                        <div class="text1">
+                            {{item.zhishu3}}
+                        </div>
+                        <div class="text1">
+                            {{item.zhishu4}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div v-transfer-dom>
-            <previewer :list="reportList" ref="previewer" :options="options"></previewer>
-        </div>
+      </div>
+      <div v-transfer-dom>
+          <previewer :list="reportList" ref="previewer" :options="options"></previewer>
+      </div>
     </div>
 </template>
 
@@ -87,6 +87,7 @@ export default {
     show (index) {
       this.$refs.previewer.show(index)
     },
+    // 获取初检报告数据
     getData () {
       const vm = this
       const params = new URLSearchParams()

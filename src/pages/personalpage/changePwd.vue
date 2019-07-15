@@ -48,6 +48,7 @@ export default {
     }
   },
   methods: {
+    // 确认修改密码事件
     comfirm () {
       const vm = this
       const pwd = vm.pwd

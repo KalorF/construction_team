@@ -135,6 +135,7 @@ export default {
         }
       }, 500)
     },
+    // 获取待复检订单数据
     getData () {
       const vm = this
       vm.$http.post('/ExaminationTwoConstructionTeamController/selectByconstructionTeamIDAndStatus')

@@ -95,6 +95,7 @@ export default {
       const vm = this
       ImagePreview(vm.imgArray, 0)
     },
+    // 获取施工现场图片
     getImg (ordersId) {
       const vm = this
       const parmas = new URLSearchParams()
@@ -109,6 +110,7 @@ export default {
           console.log(error)
         })
     },
+    // 获取已经复检的订单详细数据
     getData () {
       const vm = this
       const index = vm.$route.query.index

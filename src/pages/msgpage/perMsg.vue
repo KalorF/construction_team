@@ -170,6 +170,7 @@ export default {
     })
   },
   methods: {
+    // 获取个人信息接口
     getData () {
       const vm = this
       vm.$http.post('/ConstructionBuilderAppControllerLxb/showAll')

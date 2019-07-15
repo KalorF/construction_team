@@ -96,6 +96,7 @@ export default {
         }
       }, 500)
     },
+    // 获取未除醛订单数据
     getData () {
       const vm = this
       vm.$http.post('/OrderTableConstructionTeamController/selectOrderByconstructionTeamIDAndStatus')

@@ -125,6 +125,7 @@ export default {
     show (index) {
       this.$refs.previewer.show(index)
     },
+    // 重新填写检测数据
     reset (item) {
       const vm = this
       vm.showDialog = true
@@ -167,6 +168,7 @@ export default {
         done()
       }
     },
+    // 提交重置的数据并且转换为json字符串传给后端
     confirmReset () {
       const vm = this
       // const examinationOneId = vm.$route.query.thisId
@@ -228,6 +230,7 @@ export default {
           console.log(error)
         })
     },
+    // 获取初检数据
     getData () {
       const vm = this
       const params = new URLSearchParams()

@@ -73,6 +73,7 @@ export default {
       vm.thisId = id
       vm.show = true
     },
+    // 删除施工队成员接口
     beforeClose (action, done) {
       if (action === 'confirm') {
         const vm = this

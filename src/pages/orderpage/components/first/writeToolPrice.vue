@@ -59,6 +59,7 @@ export default {
         vm.send()
       }
     },
+    // 提交价格
     send () {
       const vm = this
       const thisId = vm.$route.query.id

@@ -76,6 +76,7 @@ export default {
       const vm = this
       vm.$router.push({name: 'MonthData'})
     },
+    // 获取月经营数据
     getData () {
       const vm = this
       vm.$http.post('/ConstructionBuilderAppControllerLxb/IncomeDetails')

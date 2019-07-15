@@ -53,6 +53,7 @@ export default {
     next()
   },
   methods: {
+    // 获取月经营数据
     getData () {
       const vm = this
       vm.$http.post('/ConstructionBuilderAppControllerLxb/IncomeDetails')

@@ -134,6 +134,7 @@ export default {
     show (index) {
       this.$refs.previewer.show(index)
     },
+    // 重置复检数据
     reset (item) {
       const vm = this
       vm.showDialog = true
@@ -195,6 +196,7 @@ export default {
           console.log(error)
         })
     },
+    // 获取复检数据
     getData () {
       const vm = this
       const examinationTwoId = vm.$route.query.examinationTwoId

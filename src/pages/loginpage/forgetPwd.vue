@@ -54,6 +54,7 @@ export default {
     }
   },
   methods: {
+    // 验证手机是否正确，以及设置验证码倒计时
     countDown () {
       const vm = this
       let reg = /^((13|14|15|17|18)[0-9]{1}\d{8})$/
@@ -78,6 +79,7 @@ export default {
         Toast('请输入手机号')
       }
     },
+    // 发送验证码
     getvalidationCode () {
       const vm = this
       const phone = vm.phone
@@ -91,6 +93,7 @@ export default {
           console.log(error)
         })
     },
+    // 验证验证码平且进行路由跳转
     confrim () {
       const vm = this
       if (vm.phone !== '' && vm.validationCode !== '') {

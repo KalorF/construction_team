@@ -86,6 +86,7 @@ export default {
     onLeft () {
       this.$router.replace({path: '/'})
     },
+    // 获取评价数据
     getlist () {
       const vm = this
       vm.$http.post('/evaluationApp/builderEvaluationList')

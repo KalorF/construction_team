@@ -198,6 +198,7 @@ export default {
     })
   },
   methods: {
+    // 获取团队信息
     getData () {
       const vm = this
       vm.$http.post('/ConstructionBuilderAppControllerLxb/showAll')

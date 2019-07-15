@@ -50,6 +50,7 @@ export default {
     // HomeTool
   },
   methods: {
+    // 进入app后判断是否需要更新
     getUpdate () {
       const vm = this
       const params = new URLSearchParams()

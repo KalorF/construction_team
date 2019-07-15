@@ -117,6 +117,7 @@ export default {
         }
       }, 500)
     },
+    // 获取已复检订单数据
     getData () {
       const vm = this
       vm.$http.post('/ExaminationTwoConstructionTeamController/selectExaminationTwoOrderOver')

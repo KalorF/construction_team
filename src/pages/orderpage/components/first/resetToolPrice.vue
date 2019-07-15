@@ -57,6 +57,7 @@ export default {
     }
   },
   methods: {
+    // 获取工装价格
     getPrice () {
       const vm = this
       const thisId = vm.$route.query.id
@@ -79,6 +80,7 @@ export default {
         vm.send()
       }
     },
+    // 修改工装价格接口
     send () {
       const vm = this
       const thisId = vm.$route.query.id

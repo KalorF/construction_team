@@ -43,6 +43,7 @@ export default {
     next()
   },
   methods: {
+    // 未完成订单数据
     getData () {
       const vm = this
       vm.$http.post('/ConstructionBuilderAppControllerLxb/TeamWallet')

@@ -267,91 +267,6 @@ export default {
     }
   },
   methods: {
-    // addOne () {
-    //   const vm = this
-    //   vm.list++
-    // },
-    // addTwo () {
-    //   const vm = this
-    //   vm.list2++
-    // },
-    // addThree () {
-    //   const vm = this
-    //   vm.list3++
-    // },
-    // decreaseOne (index) {
-    //   const vm = this
-    //   vm.list--
-    //   vm.inputOneValue.splice(index, 1)
-    //   vm.valueOne.splice(index, 1)
-    // //   vm.oneItem.splice(index, 1)
-    // },
-    // decreaseTwo (index) {
-    //   const vm = this
-    //   vm.list2--
-    //   vm.inputTwoValue.splice(index, 1)
-    //   vm.valueTwo.splice(index, 1)
-    // },
-    // decreaseThree (index) {
-    //   const vm = this
-    //   vm.list3--
-    //   vm.inputThreeValue.splice(index, 1)
-    //   vm.valueThree.splice(index, 1)
-    // },
-    // selOne (index) {
-    //   const vm = this
-    //   vm.show = true
-    //   vm.thisIndex = index
-    // },
-    // selTwo (index) {
-    //   const vm = this
-    //   vm.show2 = true
-    //   vm.thisIndexTwo = index
-    // },
-    // selThree (index) {
-    //   const vm = this
-    //   vm.show3 = true
-    //   vm.thisIndexThree = index
-    // },
-    // onCancel () {
-    //   const vm = this
-    //   vm.show = false
-    // },
-    // onCancelTwo () {
-    //   const vm = this
-    //   vm.show2 = false
-    // },
-    // onCancelThree () {
-    //   const vm = this
-    //   vm.show3 = false
-    // },
-    // onConfirm (value) {
-    //   const vm = this
-    //   const index = vm.thisIndex
-    //   vm.inputOneValue[index] = value
-    //   if (vm.valueOne[index] === undefined) {
-    //     vm.valueOne[index] = 1
-    //   }
-    //   vm.show = false
-    // },
-    // onConfirmTwo (value) {
-    //   const vm = this
-    //   const index = vm.thisIndexTwo
-    //   vm.inputTwoValue[index] = value
-    //   if (vm.valueTwo[index] === undefined) {
-    //     vm.valueTwo[index] = 1
-    //   }
-    //   vm.show2 = false
-    // },
-    // onConfirmThree (value) {
-    //   const vm = this
-    //   const index = vm.thisIndexThree
-    //   vm.inputThreeValue[index] = value
-    //   if (vm.valueThree[index] === undefined) {
-    //     vm.valueThree[index] = 1
-    //   }
-    //   vm.show3 = false
-    // },
     // 初始化resize事件，防止再次触发上一次的resize
     areaF () {
       window.onresize = function () {
@@ -377,31 +292,6 @@ export default {
           }, 200)
         }
       }
-      // document.getElementById('apply').style.position = 'absolute'
-      // document.getElementById('apply').style.bottom = 0
-      // document.getElementById('apply').style.width = '100%'
-      // var clientHeight = document.documentElement.clientHeight || document.body.clientHeight
-      // window.onresize = function () {
-      //   var nowClientHeight = document.documentElement.clientHeight || document.body.clientHeight
-      //   if (clientHeight - nowClientHeight > 60) { // 因为ios有自带的底部高度
-      //     // document.getElementById('areaInput').focus()
-      //     // setTimeout(() => {
-      //     // document.getElementById('apply').classList.add()
-      //     document.getElementById('apply').style.position = 'absolute'
-      //     document.getElementById('apply').style.bottom = 0
-      //     document.getElementById('apply').style.width = '100%'
-      //     // }, 200)
-      //   // 键盘弹出的事件处理
-      //   } else {
-      //   // 键盘收起的事件处理
-      //     // setTimeout(() => {
-      //     // document.getElementById('apply').classList.remove('focusState')
-      //     document.getElementById('apply').style.position = 'relative'
-      //     document.getElementById('apply').style.top = 0
-      //     // document.getElementById('areaInput').unbind('focus')
-      //     // }, 200)
-      //   }
-      // }
     },
     inputFocus () {
       const vm = this
@@ -409,6 +299,7 @@ export default {
         Toast('木地板面积应小于房屋面积')
       }
     },
+    // 进行数据拼接
     send () {
       const vm = this
       vm.listName = [...vm.columnsOne, ...vm.columnsTwo, ...vm.columnsThree] // ES6写法 ES5: arr1.concat(arr2,arr3) 对象:Object.assign(obj1,obj2,obj3)
@@ -465,6 +356,7 @@ export default {
         done()
       }
     },
+    // 提交价格
     sendPrice () {
       const vm = this
       const customerFurnitureList = vm.customerFurnitureList
@@ -498,6 +390,7 @@ export default {
           console.log(err)
         })
     },
+    // 获取各个家具的价格以及每平米的价格
     getPrice () {
       const vm = this
       vm.$http

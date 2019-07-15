@@ -120,6 +120,7 @@ export default {
         done()
       }
     },
+    // 查看除醛订单详情数据
     getData () {
       const vm = this
       const index = vm.$route.query.index

@@ -42,6 +42,7 @@ export default {
     }
   },
   methods: {
+    // 重置密码
     confirm () {
       const vm = this
       const pwd = vm.pwd

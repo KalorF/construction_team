@@ -35,6 +35,7 @@ export default {
     this.getData()
   },
   methods: {
+    // 获取施工队基本信息
     getData () {
       const vm = this
       vm.$http.post('/constructionBuilderInfo')

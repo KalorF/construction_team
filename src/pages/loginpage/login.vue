@@ -42,6 +42,7 @@ export default {
     route () {
       this.$router.push({path: '/forgetPwd'})
     },
+    // 登陆接口
     confirm () {
       const vm = this
       const phone = vm.phone
@@ -54,7 +55,7 @@ export default {
           .then((res) => {
             if (res.data.code === 200) {
               const token = res.data.data.token
-              window.localStorage.setItem('token', token)
+              window.localStorage.setItem('token', token) // 把token存储到localStorage
               Toast.success(res.data.message)
               vm.$router.replace({name: 'Home', query: { time: new Date().getTime() }})
             } else {
